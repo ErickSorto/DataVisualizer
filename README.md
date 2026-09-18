@@ -2,6 +2,10 @@
 
 A Python desktop application for loading CSV and Excel files and creating simple data visualizations.
 
+Visit the [Data Visualizer website](https://ericksorto.github.io/DataVisualizer/) for the demo and installer downloads.
+
+Download the latest installers from the [GitHub Release page](https://github.com/ErickSorto/DataVisualizer/releases/tag/v1.0.0).
+
 <img width="396" height="493" alt="image" src="https://github.com/user-attachments/assets/13b0a621-4433-4197-8abe-060ef426542f" />
 
 ## User Flow
