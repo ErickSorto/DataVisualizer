@@ -36,7 +36,7 @@ Open the downloaded file and follow the instructions for your operating system. 
 Clone the repository from GitHub, then open the project folder:
 
 ```bash
-git clone <todo-url>
+git clone https://github.com/ErickSorto/DataVisualizer.git
 cd DataVisualizer
 ```
 
