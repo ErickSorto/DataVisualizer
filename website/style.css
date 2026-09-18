@@ -1,0 +1,41 @@
+
+.box-1 {
+  /*recommend order of attributes: width-shape-color*/
+  border: 2px transparent;
+  /*I prefer this style*/
+  /*border-radius: 10px;*/
+  background-color: white;
+  padding: 20px;
+  width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.box-2 {
+  /* border: 1px soild #a6a6a6; */
+  border: transparent;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width:800px;
+  margin: auto;
+  text-align: center;
+}
+
+.h-link {
+  color:blue;
+  font-weight: bold;
+}
+
+.button {
+  display:flex;
+  margin-top: 1rem;
+}
+
+.button-text {
+  color:white;
+  display:inline-block;
+  background-color: rgb(53, 53, 255);
+  width: 70px;
+  border-radius: 0.6rem;
+}
