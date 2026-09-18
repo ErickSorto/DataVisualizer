@@ -1,0 +1,10 @@
+# GUI framework; pip installs the matching Qt components automatically.
+PySide6==6.11.2
+
+# Data processing and charting.
+numpy
+pandas
+matplotlib
+
+# Excel (.xlsx) support for pandas.read_excel.
+openpyxl
