@@ -1,0 +1,61 @@
+name: Build Installers
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            name: macOS
+          - os: windows-latest
+            name: Windows
+          - os: ubuntu-latest
+            name: Linux
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pyinstaller
+
+      - name: Build application
+        run: pyinstaller --name DataVisualizer --windowed --onedir main.py
+
+      - name: Package macOS installer
+        if: runner.os == 'macOS'
+        run: ditto -c -k --sequesterRsrc --keepParent dist/DataVisualizer.app dist/DataVisualizer-macOS.zip
+
+      - name: Package Windows installer
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist/DataVisualizer -DestinationPath dist/DataVisualizer-Windows.zip
+
+      - name: Package Linux installer
+        if: runner.os == 'Linux'
+        run: tar -czf dist/DataVisualizer-Linux.tar.gz -C dist DataVisualizer
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: DataVisualizer-${{ matrix.name }}
+          path: |
+            dist/*.zip
+            dist/*.tar.gz
